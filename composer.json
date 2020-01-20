@@ -1,0 +1,29 @@
+{
+  "name": "aschelnokov/test-task",
+  "description": "Test task for job",
+  "authors": [
+    {
+      "name": "achelnokov",
+      "email": "as@alltel24.ru"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": ""
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "fxp/composer-asset-plugin": "^1.4",
+    "npm-asset/jquery": "*"
+  },
+   "config": {
+    "fxp-asset": {
+      "installer-paths": {
+        "npm-asset-library": "vendor/npm",
+        "bower-asset-library": "vendor/bower"
+      }
+    },
+    "process-timeout": 1800
+  }
+}
