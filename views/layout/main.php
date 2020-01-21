@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var $content
+ */
 
 use app\assets\AppAsset;
 
@@ -17,14 +20,10 @@ use app\assets\AppAsset;
 </head>
 <body>
 <?php
-/**
- * @var $content
- */
+
 $this->renderPartial('@header');
 ?>
-<h4>---START CONTENT---</h4>
 <?= $content; ?>
-<h4>---STOP CONTENT---</h4>
 <?php $this->renderPartial('@footer'); ?>
 <?= AppAsset::buildJs() ?>
 </body>

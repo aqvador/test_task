@@ -28,14 +28,11 @@ abstract class AssetBuilder extends BaseObject
         print_r(self::$css);
         ob_start();
         foreach ($styles as $style) : ?>
-            <?php if (file_exists(App::$config['webPath'] . DS . $style)) : ?>
-
-                <link type="text/css"
-                      rel="stylesheet"
-                      href="<?= static::getTimeStampFile($style, App::$config['webPath'])?>"
-                />
-            <?php endif;
-        endforeach;
+            <link type="text/css"
+                  rel="stylesheet"
+                  href="<?= static::getTimeStampFile($style, App::$config['webPath']) ?>"
+            />
+        <?php endforeach;
         return ob_get_clean();
     }
 
@@ -47,12 +44,8 @@ abstract class AssetBuilder extends BaseObject
         $scripts = array_unique(array_filter(static::$js));
         ob_start();
         foreach ($scripts as $script) : ?>
-            <?php if (file_exists(App::$config['webPath'] . DS . $script)) : ?>
-                <script
-                        src="<?= static::getTimeStampFile($script, App::$config['webPath'])?>">
-                </script>
-            <?php endif;
-        endforeach;
+            <script src="<?= static::getTimeStampFile($script, App::$config['webPath']) ?>"></script>
+        <?php endforeach;
         return ob_get_clean();
     }
 
@@ -84,6 +77,9 @@ abstract class AssetBuilder extends BaseObject
 
     public static function getTimeStampFile($file, $dir)
     {
-        return implode('?', [$file, filemtime($dir . DS . $file)]);
+        if (file_exists($dir . DS . $file)) {
+            return implode('?', [$file, filemtime($dir . DS . $file)]);
+        }
+        return $file;
     }
 }
