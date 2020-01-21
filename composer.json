@@ -14,16 +14,19 @@
   },
   "minimum-stability": "stable",
   "require": {
-    "fxp/composer-asset-plugin": "^1.4",
-    "npm-asset/jquery": "*"
+    "npm-asset/jquery": "*",
+    "npm-asset/bootstrap": "*"
   },
-   "config": {
+  "config": {
+    "process-timeout": 1800,
     "fxp-asset": {
-      "installer-paths": {
-        "npm-asset-library": "vendor/npm",
-        "bower-asset-library": "vendor/bower"
-      }
-    },
-    "process-timeout": 1800
-  }
+      "enabled": false
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
 }
